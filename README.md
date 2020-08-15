@@ -1,4 +1,4 @@
-# Password Hashing methods for python and php
+# Password Hashing methods for python, php and nodejs
 
 ## Python
 Password hashing using SHA256 and Salt in Python
