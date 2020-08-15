@@ -25,3 +25,51 @@ Providing the `PASSWORD_DEFAULT` instructs PHP to use the default hashing algori
 Increasing cost (which defaults to 10) makes the hash harder to brute-force but also means generating hashes and verifying passwords against them will be more work for your server's CPU.
 
 Note that even though the default hashing algorithm may change, old hashes will continue to verify just fine because the algorithm used is stored in the hash and `password_verify()` picks up on it.
+
+
+## NodeJs
+
+using library [bcrypt][1] its easy to generate password hash.
+
+### install & Include
+
+    npm install --save bcrypt
+
+then include the library
+
+    const bcrypt = require( 'bcrypt' );
+
+### Generate & Verify Hash
+
+to generate hash in Asynchronous way use the following method.
+
+    bcrypt.hash( 'passwordToHash', 10, function( err, hash ) {
+      // Store hash in database
+    });
+
+`10` is the number of rounds to use when generating a salt.
+to verify password
+
+    bcrypt.compare( 'passwordToCompare', hash, function( err, res ) {
+      if( res ) {
+       // Password matched
+      } else {
+       // Password didn't match
+      } 
+    });
+
+### Generate & Verify Hash
+
+to generate and verify hash in synchronous way use the following method.
+
+    let hash = bcrypt.hashSync( 'passwordToHash', 10 );
+
+`10` is the number of rounds to use when generating a salt. To verify hash
+
+    if( bcrypt.compareSync( 'passwordToCompare', hash ) ) {
+       // Password matched
+    } else {
+       // Password didn't match
+    }
+
+  [1]: https://www.npmjs.com/package/bcrypt
