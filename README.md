@@ -73,3 +73,6 @@ to generate and verify hash in synchronous way use the following method.
     }
 
   [1]: https://www.npmjs.com/package/bcrypt
+
+
+## JavaScript
